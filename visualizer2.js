@@ -37,6 +37,10 @@ class Figure {
       this.size -= this.size * 0.1;
     }
   }
+  teleport() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+  }
 }
 let figures = [];
 
@@ -54,6 +58,9 @@ const animate = () => {
       f.draw();
       f.circularMovement();
       f.changeSize(samples[i]);
+      if (Math.random() > 0.99) {
+        f.teleport();
+      }
     });
   }
   requestAnimationFrame(animate);
